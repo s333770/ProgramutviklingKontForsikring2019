@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.oversikt.Oversikt"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="564.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.oversikt.OversiktController">
+   <children>
+      <TableView fx:id="tableView" layoutX="55.0" layoutY="296.0" prefHeight="216.0" prefWidth="627.0">
+        <columns>
+          <TableColumn fx:id="tableColumnForsikring" prefWidth="308.0" text="Forsikring " />
+            <TableColumn fx:id="tableColumnPris" minWidth="1.5" prefWidth="318.0" text="Pris" />
+        </columns>
+      </TableView>
+      <VBox alignment="CENTER" prefHeight="289.0" prefWidth="737.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="118.0" prefWidth="737.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="63.0" prefWidth="348.0" text="Skriv inn telefonnummer" />
+                  <TextField fx:id="txtTelefonnummer" alignment="CENTER" prefHeight="63.0" prefWidth="282.0" />
+               </children>
+            </HBox>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnOversikt" prefHeight="79.0" prefWidth="231.0" text="Se dine forsikringer" />
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>

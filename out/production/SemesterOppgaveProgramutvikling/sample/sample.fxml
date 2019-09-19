@@ -25,13 +25,13 @@
                   <HBox alignment="CENTER" prefHeight="99.0" prefWidth="593.0" spacing="30.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#kjop" prefHeight="70.0" prefWidth="150.0" stylesheets="@../stylesheet.css" text="Kjøp" />
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" stylesheets="@../stylesheet.css" text="Oversikt" />
+                        <Button mnemonicParsing="false" onAction="#oversikt" prefHeight="70.0" prefWidth="150.0" stylesheets="@../stylesheet.css" text="Oversikt" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="124.0" prefWidth="593.0" spacing="30.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" stylesheets="@../stylesheet.css" text="Si opp" />
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" stylesheets="@../stylesheet.css" text="Meld skade" />
+                        <Button mnemonicParsing="false" onAction="#siOpp" prefHeight="70.0" prefWidth="150.0" stylesheets="@../stylesheet.css" text="Si opp" />
+                        <Button mnemonicParsing="false" onAction="#skade" prefHeight="70.0" prefWidth="150.0" stylesheets="@../stylesheet.css" text="Meld skade" />
                      </children>
                   </HBox>
                </children>

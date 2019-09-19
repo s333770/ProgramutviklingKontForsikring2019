@@ -2,15 +2,21 @@ package sample.kjop;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import sample.Alarmboks;
 import sample.Kunde.Kunde;
+import javafx.scene.control.ToggleGroup;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.InputMismatchException;
+import java.util.ResourceBundle;
 
+import static sample.BytteAvScener.lastInnStage;
 import static sample.Kunde.Kunde.kundeForsikring;
 
-public class KjopController {
+public class KjopController implements Initializable {
 
     @FXML
     private TextField txtFornavn;
@@ -22,36 +28,39 @@ public class KjopController {
     private TextField txtEmail;
 
     @FXML
-    private TextField txtPris;
-
+    private Label lblPris;
 
     @FXML
-        void bekreftKjop(ActionEvent event) {
-            kundeForsikring.add(new Kunde(txtFornavn.getText(),txtEtternavn.getText(),txtEmail.getText(),"1000"));
+    private Label lblType;
+
+    @FXML
+    private ChoiceBox<String> choiceBox=new ChoiceBox<>();
+
+    private void visElementer(ActionEvent actionEvent) {
+        if (choiceBox.getValue() == "Båt") {
+            lblType.setText("Båt");
+            lblPris.setText("1200");
+        } else if (choiceBox.getValue() == "Innbo") {
+            lblType.setText("Innbo");
+            lblPris.setText("2000");
+        } else if (choiceBox.getValue() == "Fritidsbolig") {
+            lblType.setText("Fritid");
+            lblPris.setText("3000");
+        } else if (choiceBox.getValue() == "Reise") {
+            lblType.setText("Reise");
+            lblPris.setText("1100");
         }
+    }
 
-        @FXML
-        void fritidKjop(ActionEvent event) {
 
-        }
+    Alert alarmboks = new Alert(Alert.AlertType.INFORMATION); // Lager en alarmboks
 
-        @FXML
-        void kjopBat(ActionEvent event) {
 
-        }
+    public void tilbake(javafx.event.ActionEvent actionEvent) throws IOException {
+        lastInnStage(actionEvent, "/sample/sample.fxml");
+    }
 
-        @FXML
-        void kjopInnbo(ActionEvent event) {
-
-        }
-
-        @FXML
-        void reiseKjop(ActionEvent event) {
-
-        }
-    Alert informasjonboks = new Alert(Alert.AlertType.INFORMATION); // Lager en alarmboks
-
-        public void sjekkOmAlleFeltErFyltUt() throws InputMismatchException {
+    public void sjekkOmAlleFeltErFyltUt() throws InputMismatchException {
             try {
                 if (txtFornavn.getText() == null || txtEtternavn.getText() == null || txtEmail.getText() == null) {
                     throw new InputMismatchException("Alle feltene er ikke fylt ut ");
@@ -59,12 +68,33 @@ public class KjopController {
             }
             catch(InputMismatchException e){
                 System.err.println(e.getMessage());
-                informasjonboks.setTitle("Feil i en av inputfeltene");
-                informasjonboks.setContentText(e.getMessage());
-                informasjonboks.show();
+                alarmboks.setTitle("Feil i en av inputfeltene");
+                alarmboks.setContentText(e.getMessage());
+                alarmboks.show();
             }
         }
 
+    @FXML
+    void bekreftKjop(ActionEvent event) {
+
+        try{
+                kundeForsikring.add(new Kunde(txtFornavn.getText(),txtEtternavn.getText(),txtEmail.getText(),lblType.getText(),lblPris.getText()));
+                System.out.println("Hello world");
+                System.out.println(kundeForsikring);
+        }
+        catch(InputMismatchException e){
+            System.err.println(e.getMessage());
+            alarmboks.setTitle("Feil i en av inputfeltene");
+            alarmboks.setContentText(e.getMessage());
+            alarmboks.show();
+
+        }
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        choiceBox.getItems().addAll("Båt", "Innbo", "Reise", "Fritidsbolig");
+        choiceBox.setOnAction(this::visElementer);
+    }
 }
 
 

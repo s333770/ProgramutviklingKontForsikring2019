@@ -10,6 +10,7 @@ public class Kunde {
     private SimpleStringProperty fornavn;
     private SimpleStringProperty etternavn;
     private SimpleStringProperty email;
+    private SimpleStringProperty type;
     private SimpleStringProperty pris;
 
     public static ObservableList<Kunde> getKundeForsikring() {
@@ -56,6 +57,18 @@ public class Kunde {
         this.email.set(email);
     }
 
+    public String getType() {
+        return type.get();
+    }
+
+    public SimpleStringProperty typeProperty() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type.set(type);
+    }
+
     public String getPris() {
         return pris.get();
     }
@@ -68,14 +81,16 @@ public class Kunde {
         this.pris.set(pris);
     }
 
-    public Kunde(String fornavn, String etternavn, String email, String pris) {
+    public Kunde(String fornavn, String etternavn, String email,String type, String pris) {
         this.fornavn = new SimpleStringProperty(fornavn);
         this.etternavn = new SimpleStringProperty(etternavn);
         this.email = new SimpleStringProperty(email);
+        this.type = new SimpleStringProperty(type);
         this.pris = new SimpleStringProperty(pris);
+
     }
     @Override
     public String toString(){
-        return "Navn: "+fornavn+" "+etternavn+"Email: "+email+"Pris: "+pris;
+        return "Navn: "+fornavn+" "+etternavn+"Email: "+email+"Type"+type+"Pris: "+pris;
     }
 }
