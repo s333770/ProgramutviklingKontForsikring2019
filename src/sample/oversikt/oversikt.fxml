@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="564.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.oversikt.OversiktController">
+<AnchorPane prefHeight="639.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.oversikt.OversiktController">
    <children>
       <TableView fx:id="tableView" layoutX="55.0" layoutY="296.0" prefHeight="216.0" prefWidth="627.0">
         <columns>
@@ -28,5 +28,7 @@
             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnOversikt" prefHeight="79.0" prefWidth="231.0" text="Se dine forsikringer" />
          </children>
       </VBox>
+      <Button fx:id="btnPrintut" layoutX="339.0" layoutY="566.0" mnemonicParsing="false" onAction="#btnPrintut" text="PrintUt " />
+      <Button layoutX="557.0" layoutY="566.0" mnemonicParsing="false" onAction="#btnTilbake" text="Tilbake" />
    </children>
 </AnchorPane>

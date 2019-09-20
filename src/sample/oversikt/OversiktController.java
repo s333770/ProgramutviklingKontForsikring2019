@@ -7,13 +7,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import jdk.internal.util.xml.impl.Input;
 import sample.InputException;
 import sample.Kunde.Kunde;
+import sample.SkrivUt;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static sample.BytteAvScener.lastInnStage;
 import static sample.Kunde.Kunde.kundeForsikring;
 
 public class OversiktController implements Initializable {
@@ -48,6 +50,20 @@ public class OversiktController implements Initializable {
         tableColumnForsikring.setCellValueFactory(new PropertyValueFactory<Kunde,String>("type"));
         tableColumnPris.setCellValueFactory(new PropertyValueFactory<Kunde,String>("pris"));
 
+    }
+    public void btnTilbake(javafx.event.ActionEvent actionEvent) throws IOException {
+            lastInnStage(actionEvent, "/sample/sample.fxml");
+        }
+    public void btnPrintut(ActionEvent event) throws Exception {
+        PrintUt task=new PrintUt();
+        new Thread(task).start(); //Nå fungerer trådprogrammering
+
+        Kunde kundeSkrivUt=new Kunde(tableView.getSelectionModel().getSelectedItem().getFornavn(),tableView.getSelectionModel().getSelectedItem().getEtternavn(),
+                tableView.getSelectionModel().getSelectedItem().getEmail(),tableView.getSelectionModel().getSelectedItem().getType(),tableView.getSelectionModel().getSelectedItem().getPris());
+        System.out.println(kundeSkrivUt);
+        SkrivUt skrivut=new SkrivUt();
+        skrivut.skrivData(""tableView.getSelectionModel().getSelectedItem().getFornavn(),tableView.getSelectionModel().getSelectedItem().getEtternavn(),
+                tableView.getSelectionModel().getSelectedItem().getEmail(),tableView.getSelectionModel().getSelectedItem().getType(),tableView.getSelectionModel().getSelectedItem().getPris());
     }
 
         @Override
