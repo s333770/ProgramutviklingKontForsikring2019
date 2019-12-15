@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.InputException;
 import sample.Kunde.Kunde;
-import sample.SkrivUt;
+import sample.PrintUt;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,16 +26,15 @@ public class OversiktController implements Initializable {
     TableColumn<Kunde, String> tableColumnForsikring;
     @FXML
     TableColumn<Kunde, String> tableColumnPris;
-
     @FXML
-    private TextField txtTelefonnummer;
+    private TextField telefonEllerEmail;
 
     @FXML
     void btnOversikt(ActionEvent event) throws InputException {
         int i=0;
         for(; i<kundeForsikring.size();i++){
             System.out.println(kundeForsikring);
-            if(kundeForsikring.get(i).getEmail().equals(txtTelefonnummer.getText())){
+            if(kundeForsikring.get(i).getEmail().equals(telefonEllerEmail.getText())||kundeForsikring.get(i).getTelefonnummer().equals(telefonEllerEmail.getText())){
                 setTabellVerdier("Forsikring","Pris");
                 tableView.setItems(kundeForsikring);
             }
@@ -55,16 +54,14 @@ public class OversiktController implements Initializable {
             lastInnStage(actionEvent, "/sample/sample.fxml");
         }
     public void btnPrintut(ActionEvent event) throws Exception {
-        PrintUt task=new PrintUt();
+        PrintUt task = new PrintUt();
         new Thread(task).start(); //Nå fungerer trådprogrammering
-
-        Kunde kundeSkrivUt=new Kunde(tableView.getSelectionModel().getSelectedItem().getFornavn(),tableView.getSelectionModel().getSelectedItem().getEtternavn(),
-                tableView.getSelectionModel().getSelectedItem().getEmail(),tableView.getSelectionModel().getSelectedItem().getType(),tableView.getSelectionModel().getSelectedItem().getPris());
+        Kunde kundeSkrivUt = new Kunde(tableView.getSelectionModel().getSelectedItem().getFornavn(), tableView.getSelectionModel().getSelectedItem().getEtternavn(),tableView.getSelectionModel().getSelectedItem().getTelefonnummer(),
+                tableView.getSelectionModel().getSelectedItem().getEmail(), tableView.getSelectionModel().getSelectedItem().getType(), tableView.getSelectionModel().getSelectedItem().getPris());
         System.out.println(kundeSkrivUt);
-        SkrivUt skrivut=new SkrivUt();
-        skrivut.skrivData(""tableView.getSelectionModel().getSelectedItem().getFornavn(),tableView.getSelectionModel().getSelectedItem().getEtternavn(),
-                tableView.getSelectionModel().getSelectedItem().getEmail(),tableView.getSelectionModel().getSelectedItem().getType(),tableView.getSelectionModel().getSelectedItem().getPris());
-    }
+
+
+        }
 
         @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -22,7 +22,7 @@
             <HBox alignment="CENTER" prefHeight="118.0" prefWidth="737.0">
                <children>
                   <Label alignment="CENTER" prefHeight="63.0" prefWidth="348.0" text="Skriv inn telefonnummer" />
-                  <TextField fx:id="txtTelefonnummer" alignment="CENTER" prefHeight="63.0" prefWidth="282.0" />
+                  <TextField fx:id="telefonEllerEmail" alignment="CENTER" prefHeight="63.0" prefWidth="282.0" />
                </children>
             </HBox>
             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnOversikt" prefHeight="79.0" prefWidth="231.0" text="Se dine forsikringer" />

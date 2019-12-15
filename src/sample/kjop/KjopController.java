@@ -25,6 +25,9 @@ public class KjopController implements Initializable {
     private TextField txtEtternavn;
 
     @FXML
+    private TextField txtTelefon;
+
+    @FXML
     private TextField txtEmail;
 
     @FXML
@@ -78,7 +81,7 @@ public class KjopController implements Initializable {
     void bekreftKjop(ActionEvent event) {
 
         try{
-                kundeForsikring.add(new Kunde(txtFornavn.getText(),txtEtternavn.getText(),txtEmail.getText(),lblType.getText(),lblPris.getText()));
+                kundeForsikring.add(new Kunde(txtFornavn.getText(),txtEtternavn.getText(),txtTelefon.getText(),txtEmail.getText(),lblType.getText(),lblPris.getText()));
                 System.out.println("Hello world");
                 System.out.println(kundeForsikring);
         }

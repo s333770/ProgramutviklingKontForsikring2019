@@ -53,6 +53,12 @@
                         <TextField fx:id="txtEtternavn" prefHeight="25.0" prefWidth="120.0" />
                      </children>
                   </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Telefon" />
+                        <TextField fx:id="txtTelefon" />
+                     </children>
+                  </VBox>
                   <VBox prefHeight="100.0" prefWidth="128.0">
                      <children>
                         <Label text="Email" />
