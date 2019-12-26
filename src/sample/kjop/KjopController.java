@@ -37,6 +37,9 @@ public class KjopController implements Initializable {
     private Label lblType;
 
     @FXML
+    private Label labelBekreftelse;
+
+    @FXML
     private ChoiceBox<String> choiceBox=new ChoiceBox<>();
 
     private void visElementer(ActionEvent actionEvent) {
@@ -63,26 +66,19 @@ public class KjopController implements Initializable {
         lastInnStage(actionEvent, "/sample/sample.fxml");
     }
 
-    public void sjekkOmAlleFeltErFyltUt() throws InputMismatchException {
-            try {
-                if (txtFornavn.getText() == null || txtEtternavn.getText() == null || txtEmail.getText() == null) {
-                    throw new InputMismatchException("Alle feltene er ikke fylt ut ");
-                }
-            }
-            catch(InputMismatchException e){
-                System.err.println(e.getMessage());
-                alarmboks.setTitle("Feil i en av inputfeltene");
-                alarmboks.setContentText(e.getMessage());
-                alarmboks.show();
-            }
+    private void sjekkOmAlleFeltErFyltUt() throws InputMismatchException {
+        if (txtFornavn.getText().equals("")  || txtEtternavn.getText().equals("") || txtEmail.getText().equals("")||txtTelefon.getText().equals("")) {
+            throw new InputMismatchException("Alle feltene er ikke fylt ut ");
         }
+    }
 
     @FXML
     void bekreftKjop(ActionEvent event) {
 
         try{
+             sjekkOmAlleFeltErFyltUt();
                 kundeForsikring.add(new Kunde(txtFornavn.getText(),txtEtternavn.getText(),txtTelefon.getText(),txtEmail.getText(),lblType.getText(),lblPris.getText()));
-                System.out.println("Hello world");
+                labelBekreftelse.setText("Bestilling bekreftet");
                 System.out.println(kundeForsikring);
         }
         catch(InputMismatchException e){

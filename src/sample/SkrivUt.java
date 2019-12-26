@@ -8,12 +8,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class SkrivUt extends Task<> {
+public class SkrivUt {
 
 
     public static void skrivData(String filepath, String fornavn, String etternavn,String telefonNummer, String email,String type, String pris ){
         try {
-            Thread.sleep(3000);
+
             FileWriter fileWriter=new FileWriter(filepath);
             BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
             PrintWriter printWriter=new PrintWriter(bufferedWriter);
@@ -26,8 +26,5 @@ public class SkrivUt extends Task<> {
     }
 
 
-    @Override
-    protected void call() throws Exception {
 
-    }
 }
