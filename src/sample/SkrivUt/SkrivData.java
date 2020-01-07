@@ -1,8 +1,10 @@
 package sample.SkrivUt;
 
+import javafx.concurrent.Task;
+
 import java.io.File;
 
-public abstract class SkrivData  {
+public abstract class SkrivData extends Task {
 
     public static String getFileExtension(String fullName) {
         String fileName = new File(fullName).getName();

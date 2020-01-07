@@ -28,5 +28,8 @@ public class SkrivUtDataJOBJ extends SkrivData {
     }
 
 
-
+    @Override
+    protected Object call() throws Exception {
+        return null;
+    }
 }
