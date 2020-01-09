@@ -14,6 +14,7 @@ import sample.InputException;
 import sample.Kunde.Kunde;
 import sample.SkrivUt.SkrivData;
 import sample.SkrivUt.SkrivUtDataCSV;
+import sample.SkrivUt.SkrivUtDataJOBJ;
 
 import java.io.File;
 import java.io.IOException;
@@ -82,16 +83,15 @@ public class OversiktController implements Initializable{
                     service.execute(task);
 
                 } else if (filType.equals("jobj")) {
-                    Thread.sleep(5000);// For å sjekke om trådprogrammering fungerer
-                    file.createNewFile();
-                    //pw.println(tableView.getSelectionModel().getSelectedItem());
-                    //pw.close();
+                    ExecutorService service = Executors.newSingleThreadExecutor();
+                    SkrivUtDataJOBJ task2;
+                    task2 = new SkrivUtDataJOBJ(file,tableView.getSelectionModel().getSelectedItem().getFornavn(), tableView.getSelectionModel().getSelectedItem().getEtternavn(), tableView.getSelectionModel().getSelectedItem().getEmail(), tableView.getSelectionModel().getSelectedItem().getTelefonnummer(), tableView.getSelectionModel().getSelectedItem().getType(), tableView.getSelectionModel().getSelectedItem().getPris());
+                    service.execute(task2);
                 } else {
                     alarmboks.setTitle("Ikke gyldig format");
                     alarmboks.setContentText("Du må velge enten csv eller jobj");
                     alarmboks.show();
                 }
-                System.out.println("Hello world");
 
 
             } catch (IllegalArgumentException e) {

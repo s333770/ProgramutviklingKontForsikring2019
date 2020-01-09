@@ -36,8 +36,7 @@ public class SkrivUtDataCSV extends SkrivData  {
             csvUT.append(kunde.getType());
             csvUT.append(',');
             csvUT.append(kunde.getPris());
-            pw.println(csvUT);
-            pw.close();
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -47,6 +46,7 @@ public class SkrivUtDataCSV extends SkrivData  {
         Thread.sleep(5000);
         System.out.println("Printing pågår");
         pw.println(csvUT);
+        pw.close();
         return 0;
     }
 }

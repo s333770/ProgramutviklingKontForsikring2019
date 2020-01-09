@@ -3,44 +3,49 @@ package sample.SkrivUt;
 import sample.Kunde.Kunde;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SkrivUtDataJOBJ extends SkrivData {
 
 
-    public SkrivUtDataCSV(Object threadDone) {
+    public SkrivUtDataJOBJ(Object threadDone) {
         super();
     }
 
     PrintWriter pw;
-    StringBuilder csvUT = new StringBuilder();
+    StringBuilder JOBJUt = new StringBuilder();
+    List<String> JSONUt=new ArrayList<>();
 
-    public SkrivUtDataCSV(File file, String fornavn, String etternavn, String telefonnummer, String email, String type, String pris) {
+
+    public SkrivUtDataJOBJ(File file, String fornavn, String etternavn, String telefonnummer, String email, String type, String pris) {
+
         try {
             pw=new PrintWriter(file);
+           Kunde kunde = new Kunde(fornavn, etternavn, telefonnummer, email, type, pris);
+           JSONUt.add("{ \n Fornavn: "+kunde.getFornavn());
+            JSONUt.add(" \n EtterNavn: "+kunde.getEtternavn());
+            JSONUt.add(" \n Email: "+kunde.getEmail());
+            JSONUt.add(" \n Telefon: "+kunde.getTelefonnummer());
+            JSONUt.add(" \n Type: "+kunde.getType());
+            JSONUt.add(" \n Pris: "+kunde.getPris());
+            JSONUt.add("\n }");
+            System.out.println(JSONUt.toString());
 
-            Kunde kunde = new Kunde(fornavn, etternavn, telefonnummer,email,type,pris);
-            csvUT.append(kunde.getFornavn());
-            csvUT.append(',');
-            csvUT.append(kunde.getEtternavn());
-            csvUT.append(',');
-            csvUT.append(kunde.getEmail());
-            csvUT.append(',');
-            csvUT.append(kunde.getTelefonnummer());
-            csvUT.append(',');
-            csvUT.append(kunde.getType());
-            csvUT.append(',');
-            csvUT.append(kunde.getPris());
-            pw.println(csvUT);
-            pw.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+
+
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+
+
     }
     @Override
     protected Object call() throws Exception {
+        pw.println(JSONUt.toString());
+        pw.close();
         Thread.sleep(5000);
         System.out.println("Printing pågår");
-        pw.println(csvUT);
         return 0;
     }
 }
