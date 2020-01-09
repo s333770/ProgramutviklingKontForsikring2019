@@ -21,7 +21,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="118.0" prefWidth="737.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="63.0" prefWidth="348.0" text="Skriv inn telefonnummer" />
+                  <Label alignment="CENTER" prefHeight="63.0" prefWidth="348.0" text="Skriv inn telefonnummer eller epost-adresse" />
                   <TextField fx:id="telefonEllerEmail" alignment="CENTER" prefHeight="63.0" prefWidth="282.0" />
                </children>
             </HBox>

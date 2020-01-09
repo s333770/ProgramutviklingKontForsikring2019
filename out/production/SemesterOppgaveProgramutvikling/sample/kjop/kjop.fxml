@@ -80,7 +80,7 @@
             </Label>
          </children>
       </VBox>
-      <Button layoutX="231.0" layoutY="541.0" mnemonicParsing="false" onAction="#bekreftKjop" prefHeight="70.0" prefWidth="150.0" stylesheets="@../../stylesheet.css" text="Bekreft" />
+      <Button layoutX="231.0" layoutY="498.0" mnemonicParsing="false" onAction="#bekreftKjop" prefHeight="113.0" prefWidth="150.0" stylesheets="@../../stylesheet.css" text="Bekreft" />
       <Button layoutX="231.0" layoutY="629.0" mnemonicParsing="false" onAction="#tilbake" prefHeight="70.0" prefWidth="150.0" stylesheets="@../../stylesheet.css" text="Tilbake" />
    </children>
 </AnchorPane>
