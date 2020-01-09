@@ -18,11 +18,12 @@ public class SkrivUtDataCSV extends SkrivData  {
     }
 
     PrintWriter pw;
+    StringBuilder csvUT = new StringBuilder();
 
     public SkrivUtDataCSV(File file, String fornavn, String etternavn, String telefonnummer, String email, String type, String pris) {
         try {
             pw=new PrintWriter(file);
-            StringBuilder csvUT = new StringBuilder();
+
             Kunde kunde = new Kunde(fornavn, etternavn, telefonnummer,email,type,pris);
             csvUT.append(kunde.getFornavn());
             csvUT.append(',');
@@ -40,18 +41,12 @@ public class SkrivUtDataCSV extends SkrivData  {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-
     }
-
-
-
-
     @Override
     protected Object call() throws Exception {
-        pw.
         Thread.sleep(5000);
-        System.out.println("Hello world");
+        System.out.println("Printing pågår");
+        pw.println(csvUT);
         return 0;
     }
 }
