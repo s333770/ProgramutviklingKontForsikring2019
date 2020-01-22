@@ -30,6 +30,7 @@ import static sample.SkrivUt.SkrivUtDataCSV.*;
 
 public class SiOppController implements Initializable{
 
+
     @FXML
     private TableView<Kunde> tableView;
     @FXML
@@ -70,11 +71,16 @@ public class SiOppController implements Initializable{
     }
 
     public void btnSiOpp(ActionEvent event) throws Exception {
-        System.out.println("Hello world");
 
+            Kunde valgtKunde=tableView.getSelectionModel().getSelectedItem();
+            tableView.getItems().remove(valgtKunde);
 
 
     }
+
+
+
+
 
 
 
@@ -83,6 +89,7 @@ public class SiOppController implements Initializable{
 
 
     }
+
 
 
 }

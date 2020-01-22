@@ -42,10 +42,11 @@ public class SkrivUtDataJOBJ extends SkrivData {
     }
     @Override
     protected Object call() throws Exception {
-        pw.println(JSONUt.toString());
-        pw.close();
         Thread.sleep(5000);
         System.out.println("Printing pågår");
+        pw.println(JSONUt.toString());
+        pw.close();
+
         return 0;
     }
 }
